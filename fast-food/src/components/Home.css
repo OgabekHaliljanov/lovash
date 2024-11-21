@@ -1,0 +1,332 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #fafafa;
+    color: #444;
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/* Главная секция */
+.home {
+    position: relative;
+    height: 100vh;
+    background-color: #2c3e50; /* Темный фон */
+ 
+    color: #fff;
+    padding: 20px;
+}
+
+.home-container {
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    margin-left: 370px;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
+    transition: transform 0.4s ease-in-out;
+}
+
+.home-container:hover {
+    transform: scale(1);
+}
+
+.home-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e67e22;
+    transition: transform 0.4s ease;
+}
+
+.home-title:hover {
+    transform: scale(1.1);
+}
+
+.home-description {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 300;
+}
+
+.home-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.home-button {
+    padding: 15px 30px;
+    background-color: #e67e22;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #d35400;
+    transform: scale(1.05);
+}
+
+.home-button:active {
+    transform: scale(0.98);
+}
+
+/* Рекомендуемые блюда */
+.featured {
+    padding: 80px 20px;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    border-top: 5px solid #e67e22;
+}
+
+.featured h2 {
+    font-size: 2.5rem;
+    color: #e67e22;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.featured-items {
+    display: flex;
+    flex-direction: column;  /* Изменение на колонку */
+    justify-content: center;
+    gap: 40px;  /* Увеличение промежутка между элементами */
+    flex-wrap: wrap;
+    animation: fadeInUp 2s ease-out;
+}
+
+.featured-items .item {
+    width: 100%;  /* Блоки теперь занимают всю ширину */
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.featured-items .item img {
+    width: 35%;
+    height: 450px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.featured-items .item:hover {
+    transform: translateY(-10px);
+}
+
+.featured-items .item h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.featured-items .item p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.order-button {
+    background-color: #e67e22;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 25px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.order-button:hover {
+    background-color: #d35400;
+    transform: scale(1.1);
+}
+
+.order-button:active {
+    transform: scale(0.95);
+}
+
+/* Специальные предложения */
+.promotions {
+    background-color: #ecf0f1;
+    padding: 60px 20px;
+}
+
+.promotion {
+    display: flex;
+    flex-direction: column;  /* Обновление на колонку */
+    align-items: center;
+    gap: 30px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.promotion:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.promotion img {
+    width: 35%;
+    height: 450px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.promotion-text {
+    text-align: center;
+}
+
+.promotion h3 {
+    color: #e67e22;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.promotion p {
+    font-size: 1.1rem;
+    color: #777;
+}
+
+/* Отзывы клиентов */
+.testimonials {
+    padding: 60px 20px;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+}
+
+.testimonial {
+    font-size: 1.2rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-left: 4px solid #e67e22;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.testimonial span {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.testimonial:hover {
+    transform: scale(1.05);
+}
+
+/* Подписка на новости */
+.newsletter {
+    padding: 60px 20px;
+    background-color: #e67e22;
+    text-align: center;
+}
+
+.newsletter h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.newsletter-form input {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    width: 300px;
+}
+
+.newsletter-form button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+    color: #e67e22;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #d35400;
+    color: white;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+    .home-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .home-title {
+        font-size: 2.5rem;
+    }
+
+    .home-description {
+        font-size: 1rem;
+    }
+
+    .home-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .featured-items {
+        flex-direction: column; /* Изменение на колонку */
+        align-items: center;
+    }
+
+    .promotion {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .promotion img {
+        width: 80%;
+    }
+
+    .testimonials {
+        font-size: 1rem;
+    }
+
+    .testimonial {
+        font-size: 1rem;
+    }
+}
+.plll {
+    width: 70px;
+    height: 70px;
+
+  }
