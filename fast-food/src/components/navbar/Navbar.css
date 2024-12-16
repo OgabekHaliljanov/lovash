@@ -1,0 +1,125 @@
+/* General Navbar Styling */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: #1d3557; /* Deep blue background */
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: #f1faee; /* Light white text */
+  transition: color 0.3s ease;
+}
+
+.logo-link:hover {
+  color: #a8dadc; /* Soft teal hover */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 16px;
+  color: #f1faee;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #457b9d; /* Hover effect background */
+  color: #ffffff;
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #f1faee;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:focus {
+  outline: none;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Language Switcher */
+.language-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.language-switcher button {
+  background-color: #e63946;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.language-switcher button:hover {
+  background-color: #d62839;
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    width: 120px;
+    position: absolute;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    background-color: #1d3557;
+    padding: 15px ;
+    border-radius: 8px;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-link {
+    text-align: center;
+    width: 73%;
+  }
+}

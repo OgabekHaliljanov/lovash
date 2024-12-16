@@ -22,6 +22,24 @@ app.use("/api", foodRouter);  // Use the foodRouter for all API routes that star
 
 // Root route
 app.get("/", (req, res) => res.send("Welcome to the Food API!"));  // Sends a basic welcome message when the root URL is accessed
+// Mock database for orders
+let orders = [];
+
+// Fetch all orders
+app.get('/api/orders', (req, res) => {
+  res.json(orders);
+});
+
+// Create a new order
+app.post('/api/orders', (req, res) => {
+  const newOrder = {
+    id: orders.length + 1,
+    ...req.body,
+  };
+  orders.push(newOrder);
+  res.status(201).json(newOrder);
+});
+
 
 // Start Server
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));  // Start the server and log the port it's running on

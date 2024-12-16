@@ -1,35 +1,51 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Menu from './components/Menu';
-import Checkout from './components/Checkout';
-import History from './components/History';
-import Navbar from './components/Navbar'; // Импортируем Navbar
-import Home from './components/Home';
+import Menu from './components/menu/Menu';
+import Checkout from './components/Checkout/Checkout'; // Corrected from 'Checout' to 'Checkout'
+import Navbar from './components/navbar/Navbar';
+import Home from './components/Home/Home';
+import Admin from './components/Admin/AdminPonel';
+import Orders from './components/Orders/OrdersPage';
+import { LanguageProvider } from './components/lenguage/LanguageContext';
 
 function App() {
-  const [orderHistory, setOrderHistory] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  // Функция для добавления товаров в корзину
-  const handleOrder = (item) => {
-    setOrderHistory((prevHistory) => [...prevHistory, item]);
+  const handleAddToCart = (item) => {
+    // Check if the item already exists in the cart
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+    if (existingItem) {
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        )
+      );
+    } else {
+      setCart([...cart, { ...item, quantity: 1 }]);
+    }
+  };
+
+  const handleClearCart = () => {
+    setCart([]);
   };
 
   return (
-    <Router>
-      <Navbar /> {/* Используем компонент Navbar */}
-      <div className="content" style={{ marginTop: '70px' }}>
+    <LanguageProvider>
+      <Router>
+        <Navbar />
         <Routes>
-          <Route path="/" element={<h1>Welcome to Fast Food!</h1>} />
-          <Route path="/menu" element={<Menu handleOrder={handleOrder} />} />
-          <Route path="/home" element={<Home/>} />
-          <Route
-            path="/checkout"
-            element={<Checkout orderHistory={orderHistory} setOrderHistory={setOrderHistory} />}
-          />
-          <Route path="/history" element={<History />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </LanguageProvider>
+    
   );
 }
 
