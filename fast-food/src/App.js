@@ -6,6 +6,8 @@ import Navbar from './components/navbar/Navbar';
 import Home from './components/Home/Home';
 import Admin from './components/Admin/AdminPonel';
 import Orders from './components/Orders/OrdersPage';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 import { LanguageProvider } from './components/lenguage/LanguageContext';
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </LanguageProvider>

@@ -7,6 +7,7 @@ const Checkout = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const TELEGRAM_BOT_TOKEN = "7983333907:AAEszWqQckTjW6Y_G9x_p_uy_TfftZidm6w"; // Replace with your Telegram bot token
@@ -66,8 +67,9 @@ const Checkout = () => {
       Phone: ${phone}`;
 
     try {
+      setLoading(true);
       // Send the order details
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -75,10 +77,19 @@ const Checkout = () => {
           text: message,
         }),
       });
-      alert("Order sent to Telegram successfully!");
+
+      if (response.ok) {
+        alert("Order placed successfully! You'll receive a confirmation shortly.");
+        localStorage.removeItem('cart'); // Clear cart after checkout
+        navigate('/'); // Redirect to home or confirmation page
+      } else {
+        throw new Error("Failed to send message to Telegram");
+      }
     } catch (error) {
+      alert("Error placing order. Please try again.");
       console.error("Error sending order to Telegram:", error);
-      alert("Failed to send order to Telegram.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -94,10 +105,8 @@ const Checkout = () => {
           longitude,
         }),
       });
-      alert("Location sent to Telegram successfully!");
     } catch (error) {
       console.error("Error sending location to Telegram:", error);
-      alert("Failed to send location to Telegram.");
     }
   };
 
@@ -107,8 +116,6 @@ const Checkout = () => {
       return;
     }
     sendToTelegram(cart); // Send the cart details and user information to Telegram
-    localStorage.removeItem('cart'); // Clear cart after checkout
-    navigate('/'); // Redirect to home or confirmation page
   };
 
   const handleSendLocation = () => {
@@ -164,7 +171,9 @@ const Checkout = () => {
         />
         <button onClick={handleSendLocation} className="location-button">Send Location</button>
       </div>
-      <button onClick={handleProceedToPayment} className="checkout-button">Proceed to Payment</button>
+      <button onClick={handleProceedToPayment} className="checkout-button" disabled={loading}>
+        {loading ? "Processing..." : "Proceed to Payment"}
+      </button>
     </div>
   );
 };

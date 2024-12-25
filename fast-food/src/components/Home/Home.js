@@ -84,6 +84,11 @@ const Home = () => {
           <p>{t('review2')}</p>
           <span>- John Smith</span>
         </div>
+
+        {/* Display additional customer reviews fetched from backend */}
+        <div className="customer-reviews">
+          {/* This section would dynamically render reviews fetched from the backend */}
+        </div>
       </section>
 
       {/* Subscribe for Discounts */}

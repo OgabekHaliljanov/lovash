@@ -123,3 +123,114 @@
     width: 73%;
   }
 }
+.navbar .logout-btn {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.navbar .logout-btn:hover {
+  color: #f00;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .language-switcher {
+    flex-direction: column; /* Кнопки вертикально */
+    gap: 15px; /* Увеличить расстояние */
+  }
+
+  .language-switcher button {
+    width: 100%; /* Кнопки занимают всю ширину */
+    font-size: 14px; /* Уменьшить шрифт */
+  }
+}
+
+@media (max-width: 480px) {
+  .language-switcher button {
+    font-size: 12px; /* Еще меньше текст */
+    padding: 8px 15px; /* Уменьшить внутренние отступы */
+  }
+}
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+}
+option{
+  background-color: transparent;
+}
+.language-select {
+  padding: 5px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.6s ease-in-out, scaleIn 0.4s ease-in-out;
+}
+
+
+
+
+
+.language-select option {
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.language-select option:hover {
+  background-color: #f0f8ff;
+}
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Анимация увеличения при фокусе */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Добавление тени на навигационные ссылки */
+.nav-link {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #007bff;
+  transform: translateY(-2px);
+}
+
+/* Анимация для мобильного меню */
+.menu-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.nav-links.active {
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
